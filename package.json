@@ -1,0 +1,37 @@
+{
+  "name": "myleetcode",
+  "version": "1.0.0",
+  "description": "my leetcode solution",
+  "main": "",
+  "dependencies": {
+    "jasmine": "^2.5.3"
+  },
+  "devDependencies": {
+    "jasmine": "^2.5.3",
+    "jasmine-core": "^2.5.2",
+    "jasmine-spec-reporter": "^3.2.0",
+    "karma": "^1.5.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-commonjs": "^1.0.0",
+    "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-webpack": "^2.0.2"
+  },
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GuoXiaoyang/MyLeetcode.git"
+  },
+  "keywords": [
+    "leetcode",
+    "algorithm"
+  ],
+  "author": "guoxiaoyang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GuoXiaoyang/MyLeetcode/issues"
+  },
+  "homepage": "https://github.com/GuoXiaoyang/MyLeetcode#readme"
+}
