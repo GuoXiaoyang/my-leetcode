@@ -2,12 +2,12 @@
  * Created by gxy on 2017/3/4.
  */
 
-/* leetcode_array.js
+/**********************************************************************
  01. 2Sum
  Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 
  You may assume that each input would have exactly one solution, and you may not use the same element twice.
- */
+ ***********************************************************************/
 var twoSum = function (nums, target) {
     if (nums.length < 2) return;
     var res;

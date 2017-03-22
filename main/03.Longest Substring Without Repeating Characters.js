@@ -2,7 +2,7 @@
  * Created by gxy on 2017/3/19.
  */
 
-/**
+/*******************************************************************
 
 * 3. Longest Substring Without Repeating Characters
 *
@@ -13,7 +13,7 @@
 * Given "bbbbb", the answer is "b", with the length of 1.
 * Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
 *
-**/
+****************************************************************/
 /**
  * @param {string} s
  * @return {number}
