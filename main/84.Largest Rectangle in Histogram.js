@@ -14,6 +14,7 @@
  * @return {number}
  */
 var largestRectangleArea = function(heights) {
+
   heights.push(-1);
   var stack=[],area=0,h,tmpArea;
   for(var i=0;i<heights.length;i++) {

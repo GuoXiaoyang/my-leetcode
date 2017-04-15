@@ -29,8 +29,10 @@ var subsets = function (nums) {
   
 };
 function subsetHelp(results,start,tmp,nums) {
+  console.log("tmp:",tmp);
   results.push(tmp.slice(0));
   for(var i=start;i<nums.length;i++) {
+    console.log("start,i:",start,i);
     tmp.push(nums[i]);
     subsetHelp(results,i+1,tmp,nums);
     tmp.pop();
@@ -44,13 +46,10 @@ var subsets2 = function (nums) {
   for(var i=0;i<nums.length;i++) {
     var len=results.length;
     for(var j=0;j<len;j++) {
-      var tmp=results[j].slice(0)
-      console.log("results:",results);
+      var tmp=results[j].slice(0);
       tmp.push(nums[i]);
       results.push(tmp);
-      console.log("results:",results);
     }
-    console.log("results:",results);
   }
   return results;
 };
