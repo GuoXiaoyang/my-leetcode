@@ -28,6 +28,7 @@ var search = function(nums, target) {
   }
   rot++;
   var lo=0,hi=nums.length-1;
+
   while(lo<hi) {
     var mid=parseInt((lo+hi)/2);
     var val=nums[(mid+rot)%nums.length];
