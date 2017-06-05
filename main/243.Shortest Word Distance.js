@@ -30,7 +30,7 @@ var shortestWordDistance = function (words,word1,word2) {
 
 //test
 var words = ["practice", "makes", "perfect", "coding", "makes"];
-var word1="practice", word2="coding";
+var word1="makes", word2="makes";
 var algo = "algo";
 console.time(algo);
 var res = shortestWordDistance(words,word1,word2);

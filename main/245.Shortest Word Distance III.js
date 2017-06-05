@@ -15,16 +15,26 @@
 ****************************************************************/
 var shortestWordDistance = function (words,word1,word2) {
   var len=words.length;
+  var flag=0;
   var pos1=-1,pos2=-1,dis=Number.MAX_VALUE;
   for(var i=0;i<len;i++) {
+    if(word1!=word2) {
+      if(words[i]==word1) {
+        pos1=i;
+      }else if(words[i]==word2) {
+        pos2=i;
+      }
+    } else {
+      if(flag==0 && words[i]==word1) {
+        pos1=i;
+        flag=1;
+      } else if(flag==1 && words[i]==word1) {
+        pos2=i;
+        flag=0;
+      }
+    }
     if(pos1>-1 && pos2>-1) {
       dis= Math.min(Math.abs(pos1-pos2),dis);
-    }
-    if(words[i]==word1) {
-      pos1=i;
-    }
-    if(words[i]==word2) {
-      pos2=i;
     }
   }
   return dis;
@@ -33,7 +43,7 @@ var shortestWordDistance = function (words,word1,word2) {
 
 //test
 var words = ["practice", "makes", "perfect", "coding", "makes"];
-var word1="practice", word2="practice";
+var word1="makes", word2="makes";
 var algo = "algo";
 console.time(algo);
 var res = shortestWordDistance(words,word1,word2);

@@ -25,13 +25,20 @@
  * @return {boolean}
  */
 var isIsomorphic = function(s, t) {
-
+  var pos1=new Array(256).fill(0);
+  var pos2=new Array(256).fill(0);
+  for(var i=0;i<s.length;i++) {
+    if(pos1[s.charCodeAt(i)]!=pos2[t.charCodeAt(i)]) return false;
+    pos1[s.charCodeAt(i)]=i+1;
+    pos2[t.charCodeAt(i)]=i+1;
+  }
+  return true;
 };
 
 //test
-var arr = ;
+var s="abb",t="geg" ;
 var algo = "algo";
 console.time(algo);
-var res = ;
+var res = isIsomorphic(s,t);
 console.timeEnd(algo);
 console.log("res:",res);

@@ -16,6 +16,34 @@
  Note:
  You may assume that word1 does not equal to word2, and word1 and word2 are both in the list.
 ****************************************************************/
-var wordDistance2 = function () {
 
+var wordDistance = function (words) {
+  this.wordsDict={};
+  for(var i=0;i<words.length;i++) {
+    if(!this.wordsDict[words[i]]) {
+      this.wordsDict[words[i]]=[];
+    }
+    this.wordsDict[words[i]].push(i);
+  }
 };
+wordDistance.prototype = {
+  distance:function (word1,word2) {
+    var word1Pos=this.wordsDict[word1];
+    var word2Pos=this.wordsDict[word2];
+    var i=0,j=0,minDis=Number.MAX_VALUE,tmpDis;
+    while(i<word1Pos.length && j<word2Pos.length) {
+      tmpDis=(word1Pos[i]>word2Pos[j])?(word1Pos[i]-word2Pos[j++]):(word2Pos[j]-word1Pos[i++]);
+      minDis=Math.min(minDis,tmpDis);
+    }
+    return minDis;
+  }
+};
+
+//test
+var words = ["practice", "makes", "perfect", "coding", "makes"];
+var wordsDis=new wordDistance(words);
+var algo = "algo";
+var res = wordsDis.distance("practice","perfect");
+console.log("res:",res);
+res = wordsDis.distance("coding","makes");
+console.log("res:",res);

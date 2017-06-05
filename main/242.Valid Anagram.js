@@ -18,13 +18,23 @@
  * @return {boolean}
  */
 var isAnagram = function(s, t) {
-
+  var cnts=new Array(26).fill(0);
+  for(var i=0;i<s.length;i++) {
+    cnts[s.charCodeAt(i)-'a'.charCodeAt(0)]++;
+  }
+  for(i=0;i<t.length;i++) {
+    cnts[t.charCodeAt(i)-'a'.charCodeAt(0)]--;
+  }
+  for(i=0;i<26;i++) {
+    if(cnts[i]!==0) return false;
+  }
+  return true;
 };
 
 //test
-var arr = ;
+var s="anagram", t="nagaram";
 var algo = "algo";
 console.time(algo);
-var res = ;
+var res = isAnagram(s,t);
 console.timeEnd(algo);
 console.log("res:",res);
