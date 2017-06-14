@@ -3,11 +3,13 @@
  */
 /**********************************************************************************************
  32. Longest Valid Parentheses
- Given a string containing just the characters '(' and ')', find the length of the longest valid (well-formed) parentheses substring.
+ Given a string containing just the characters '(' and ')', find the length
+ of the longest valid (well-formed) parentheses substring.
 
  For "(()", the longest valid parentheses substring is "()", which has length = 2.
 
- Another example is ")()())", where the longest valid parentheses substring is "()()", which has length = 4.
+ Another example is ")()())", where the longest valid parentheses substring
+ is "()()", which has length = 4.
  **********************************************************************************************/
 /**
  * @param {string} s
@@ -45,7 +47,9 @@ var longestValidParentheses = function(s) {
 
 
 //test
-var str=")))(()())()((()(())(()))(((((()()(()))(()()((((())())(()())))()())(((()((((((())()()))((()))(()))))((((((()((()()()))))))(()()()))))())()()((((((()))((((()(()))))()())((((()(()())())";
+var str=")))(()())()((()(())(()))(((((()()(()))(()()((((())())(()())))" +
+  "()())(((()((((((())()()))((()))(()))))((((((()((()()()))))))(()()()))))" +
+  "())()()((((((()))((((()(()))))()())((((()(()())())";
 var algo1 = "algo1";
 console.time(algo1);
 var res = longestValidParentheses(str);
