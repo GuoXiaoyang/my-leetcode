@@ -3,7 +3,8 @@
  */
 /**********************************************************************
  23. Merge k Sorted Lists
- Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
+ Merge k sorted linked lists and return it as one sorted list.
+ Analyze and describe its complexity.
  **********************************************************************/
 /**
  * Definition for singly-linked list.
@@ -45,6 +46,7 @@ var mergeKLists = function (lists) {
 
 // data structure
 // build a binary head with the listNode node-type
+
 function BinaryHeap(scoreFunction) {
   this.data = [];
   this.scoreFunction = scoreFunction;
