@@ -7,6 +7,15 @@ function TreeNode(val) {
   this.left = this.right = null;
 }
 
+function BinaryTree(nums) {
+  this.root = levelCreateBinaryTree(nums);
+}
+BinaryTree.prototype = {
+  print: function () {
+    printBinaryTreeHelper(this.root,"",true);
+  }
+};
+
 //[123#56#] '#'means empty node
 function levelCreateBinaryTree(arr) {
   if(!arr.length) return null;
@@ -47,13 +56,7 @@ function printBinaryTreeHelper(root, prefix, isTail) {
   }
 }
 
-function printBinaryTree(root) {
-  printBinaryTreeHelper(root,"",true);
-}
 
 
-// test
-//test
-var arr = [1,2,3,4,5,6,7];
-var root=levelCreateBinaryTree(arr);
-printBinaryTree(root,"",true);
+module.exports = BinaryTree;
+
