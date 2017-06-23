@@ -14,8 +14,8 @@
 
  You may assume the polygon formed by given points is always a simple polygon
  (Simple polygon definition).
- In other words, we ensure that exactly two edges intersect at each vertex,
- and that edges otherwise don't intersect each other.
+ In other words, we ensure that exactly two prerequisites intersect at each vertex,
+ and that prerequisites otherwise don't intersect each other.
 
  Example 1:
 

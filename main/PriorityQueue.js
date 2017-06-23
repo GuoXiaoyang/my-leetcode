@@ -1,13 +1,13 @@
 /**
- * Created by gxy on 2017/6/16.
+ * Created by gxy on 2017/6/22.
  */
 //minHeap;
-function BinaryHeap(scoreFunction) {
+function PriorityQueue(comparator) {
   this.data = [];
-  this.scoreFunction = scoreFunction;
+  this.comparator = comparator;
 }
 
-BinaryHeap.prototype = {
+PriorityQueue.prototype = {
   push: function (element) {
     // console.log("element:", this.scoreFunction(element));
     this.data.push(element);
@@ -42,12 +42,11 @@ BinaryHeap.prototype = {
   },
 
   bubbleUp: function (n) {
-    var element = this.data[n],
-      score = this.scoreFunction(element);
+    var element = this.data[n];
     while (n > 0) {
       var parentN = Math.floor((n + 1) / 2 - 1),
         parent = this.data[parentN];
-      if (score >= this.scoreFunction(parent)) break;
+      if (this.comparator(element,parent)) break;
       this.data[parentN] = element;
       this.data[n] = parent;
       n = parentN;
@@ -55,24 +54,21 @@ BinaryHeap.prototype = {
   },
   sinkdown: function (n) {
     var element = this.data[n],
-      length = this.size(),
-      score = this.scoreFunction(element);
+      length = this.size();
 
     while (true) {
       var swapN = null;
       var child2N = (n + 1) * 2, child1N = child2N - 1;
       if (child1N < length) {
-        var child1 = this.data[child1N],
-          child1Score = this.scoreFunction(child1);
-        if (score > child1Score) {
+        var child1 = this.data[child1N];
+        if (this.comparator(element,child1)) {
           swapN = child1N;
         }
 
       }
       if (child2N < length) {
-        var child2 = this.data[child2N],
-          child2Score = this.scoreFunction(child2);
-        if (child2Score < (swapN===null?score:child1Score)) {
+        var child2 = this.data[child2N];
+        if (!this.comparator(child2,swapN===null?element:child1)) {
           swapN = child2N;
         }
       }
@@ -91,4 +87,4 @@ BinaryHeap.prototype = {
 
 };
 
-module.exports=BinaryHeap;
+module.exports=PriorityQueue;
