@@ -25,7 +25,7 @@
  Output: 3
  Explanation: The longest consecutive path is [1, 2, 3] or [3, 2, 1].
  ****************************************************************/
-var BinaryTree = require('./BinaryTree');
+var BinaryTree = require('../modules/BinaryTree');
 var longestConsecutive = function (root) {
   var cnt = [0];
   pathHelper(root, cnt);

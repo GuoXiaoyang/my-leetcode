@@ -18,7 +18,7 @@
 
  Returns [4, 5, 3], [2], [1].
  ****************************************************************/
-var BinaryTree = require('./BinaryTree');
+var BinaryTree = require('../modules/BinaryTree');
 var findLeaves = function (root) {
   var res = [];
   maxHeight(root, res);

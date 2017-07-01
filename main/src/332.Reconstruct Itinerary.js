@@ -27,7 +27,7 @@
  * @param {string[][]} tickets
  * @return {string[]}
  */
-var PriorityQueue = require('./PriorityQueue');
+var PriorityQueue = require('../modules/PriorityQueue');
 var findItinerary = function (tickets) {
   var res = [], neighbors = {};
   for (var i = 0; i < tickets.length; i++) {

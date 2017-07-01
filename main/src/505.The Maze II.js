@@ -57,62 +57,62 @@
  but you could assume the border of the maze are all walls.
  The maze contains at least 2 empty spaces, and both the width and height of the maze
  won't exceed 100.
-****************************************************************/
-var PriorityQueue = require('./PriorityQueue');
+ ****************************************************************/
+var PriorityQueue = require('../modules/PriorityQueue');
 
-var Point = function (x,y,l,p) {
-  this.x=x;
-  this.y=y;
-  this.l=l;
+var Point = function (x, y, l) {
+  this.x = x;
+  this.y = y;
+  this.l = l;
 };
 
 var shortestDistance = function (maze, start, dest) {
-  if(maze.length == 0 || maze[0].length == 0) return false;
-  if(start[0] == dest[0] && start[1] == dest[1]) return true;
+  if (maze.length == 0 || maze[0].length == 0) return false;
+  if (start[0] == dest[0] && start[1] == dest[1]) return true;
   //init points
-  var points=[];
-  for(var i=0;i<maze.length;i++) {
+  var points = [];
+  for (var i = 0; i < maze.length; i++) {
     points.push([]);
-    for(var j=0;j<maze[0].length;j++) {
-      points[i].push(new Point(i,j,Number.MAX_VALUE));
+    for (var j = 0; j < maze[0].length; j++) {
+      points[i].push(new Point(i, j, Number.MAX_VALUE));
     }
   }
   //priority queue to BFS
   var queue = new PriorityQueue(function compare(node1, node2) {
-    return node1.l>node2.l;
+    return node1.l > node2.l;
   });
   //init the start
-  queue.push(new Point(start[0],start[1],0));
-  var ds="dlru";
-  var dir=[[1,0],[0,-1],[0,1],[-1,0]];
-  while(queue.size()>0) {
-    var node=queue.pop();
-    if(!queue.comparator(points[node.x][node.y],node)) continue;
-    points[node.x][node.y]=node;
-    for(i=0;i<dir.length;i++) {
-      var x=node.x,y=node.y,l=node.l,p=node.p;
-      if(notWall(maze,x+dir[i][0],y+dir[i][1])) {
-        while(notWall(maze,x+dir[i][0],y+dir[i][1])) {
-          x+=dir[i][0];
-          y+=dir[i][1];
+  queue.push(new Point(start[0], start[1], 0));
+  var ds = "dlru";
+  var dir = [[1, 0], [0, -1], [0, 1], [-1, 0]];
+  while (queue.size() > 0) {
+    var node = queue.pop();
+    if (!queue.comparator(points[node.x][node.y], node)) continue;
+    points[node.x][node.y] = node;
+    for (i = 0; i < dir.length; i++) {
+      var x = node.x, y = node.y, l = node.l, p = node.p;
+      if (notWall(maze, x + dir[i][0], y + dir[i][1])) {
+        while (notWall(maze, x + dir[i][0], y + dir[i][1])) {
+          x += dir[i][0];
+          y += dir[i][1];
           l++;
         }
-        queue.push(new Point(x,y,l));
+        queue.push(new Point(x, y, l));
       }
     }
   }
-  return points[dest[0]][dest[1]].l==Number.MAX_VALUE?-1:points[dest[0]][dest[1]].l;
+  return points[dest[0]][dest[1]].l == Number.MAX_VALUE ? -1 : points[dest[0]][dest[1]].l;
 };
 
-function notWall(maze,i,j) {
-  return i>-1 && i<maze.length && j>-1 && j<maze[0].length && maze[i][j]!=1;
+function notWall(maze, i, j) {
+  return i > -1 && i < maze.length && j > -1 && j < maze[0].length && maze[i][j] != 1;
 }
 
 //test
-var maze = [[0, 0, 1, 0, 0], [0,0,0,0,0],[0, 0, 0, 1, 0],
-  [1, 1, 0, 1, 1], [0, 0, 0, 0, 0]], start=[0,4],destination=[3,2];
+var maze = [[0, 0, 1, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 1, 0],
+  [1, 1, 0, 1, 1], [0, 0, 0, 0, 0]], start = [0, 4], destination = [3, 2];
 var algo = "algo";
 console.time(algo);
 var res = shortestDistance(maze, start, destination);
 console.timeEnd(algo);
-console.log("res:",res);
+console.log("res:", res);

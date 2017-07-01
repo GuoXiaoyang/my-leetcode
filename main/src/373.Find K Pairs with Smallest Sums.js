@@ -37,7 +37,7 @@
  * @param {number} k
  * @return {number[][]}
  */
-var Heap = require('./BinaryHeap');
+var Heap = require('../modules/BinaryHeap');
 
 var kSmallestPairs = function (nums1, nums2, k) {
   var res = [];

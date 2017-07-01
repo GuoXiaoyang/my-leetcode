@@ -9,7 +9,7 @@
  Given [[0, 30],[5, 10],[15, 20]],
  return 2.
  ****************************************************************/
-var Heap = require('./BinaryHeap');
+var Heap = require('../modules/BinaryHeap');
 var roomNum = function (intervals) {
   intervals.sort(function (interval1, interval2) {
     return interval1[0] - interval2[0];

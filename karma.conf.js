@@ -1,84 +1,69 @@
-// Karma configuration
-// Generated on Tue Mar 14 2017 00:04:09 GMT+0800 (中国标准时间)
+/**
+ * Created by gxy on 2017/7/1.
+ */
+// Reference: http://karma-runner.github.io/0.12/config/configuration-file.html
+// const webpackConfig = require('./webpack.config');
 
-module.exports = function(config) {
+module.exports = function karmaConfig(config) {
   config.set({
+    frameworks: [
+      // Reference: https://github.com/karma-runner/karma-jasmine
+      // Set framework to jasmine
+      'jasmine',
+    ],
 
-    // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    reporters: [
+      // Reference: https://github.com/mlex/karma-spec-reporter
+      // Set reporter to print detailed results to console
+      'progress',
 
+      // Reference: https://github.com/karma-runner/karma-coverage
+      // Output code coverage files
+      'coverage',
+    ],
 
-    // frameworks to use
-    // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine','commonjs'],
-
-
-    // list of files / patterns to load in the browser
     files: [
-        'main/**/*.js',
-        // 'lib/**/*.js',
-        'spec/test/**/*[sS]pec.js'
+      // Grab all files in the app folder that contain .spec.
+      'main/tests.webpack.js',
     ],
 
-
-    // list of files to exclude
-    exclude: [
-    ],
-
-
-    // preproces matching files before serving them to the browser
-    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        'main/**/*.js':['commonjs','coverage'],
-        // 'lib/**/*.js':['commonjs','coverage'],
-        'spec/test/**/*[sS]pec.js':['commonjs']
+      // Reference: http://webpack.github.io/docs/testing.html
+      // Reference: https://github.com/webpack/karma-webpack
+      // Convert files with webpack and load sourcemaps
+      'main/tests.webpack.js': ['webpack'],
     },
 
+    browsers: [
+      // Run tests using PhantomJS
+      'PhantomJS',
+    ],
 
-    // test results reporter to use
-    // possible values: 'dots', 'progress'
-    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress','coverage'],
+    singleRun: true,
 
-
-    // web server port
-    port: 9876,
-
-
-    // enable / disable colors in the output (reporters and logs)
-    colors: true,
-
-
-    // level of logging
-    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
-
-
-    // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: true,
-
-
-    // start these browsers
-    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
-
-
-    // Continuous Integration mode
-    // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
-
-    // Concurrency level
-    // how many browser should be started simultaneous
-    concurrency: Infinity,
-
-
-    //add coverage files
+    // Configure code coverage reporter
     coverageReporter: {
-       type : 'html',
-        dir : 'coverage/'
-    }
+      dir: 'coverage/',
+      reporters: [
+        { type: 'text-summary' },
+        { type: 'html' },
+      ],
+    },
 
-  })
+    webpack: {
+      module: {
+        loaders: [{
+          test: /\.js/,
+          exclude: /node_modules/,
+          use: 'babel-loader',
+        }],
+      },
+      watch: true,
+    },
 
-
-}
+    // Hide webpack build information from output
+    webpackMiddleware: {
+      noInfo: 'errors-only',
+    },
+  });
+};

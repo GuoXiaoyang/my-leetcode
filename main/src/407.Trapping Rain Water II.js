@@ -23,7 +23,7 @@
  * @param {number[][]} heightMap
  * @return {number}
  */
-var Heap = require('./BinaryHeap');
+var Heap = require('../modules/BinaryHeap');
 
 var trapRainWater = function (heightMap) {
   if (!heightMap || heightMap.length < 1 || heightMap[0].length < 1) return 0;

@@ -71,7 +71,7 @@
  The maze contains at least 2 empty spaces, and the width and the height of the maze
  won't exceed 30.
  ****************************************************************/
-var PriorityQueue = require('./PriorityQueue');
+var PriorityQueue = require('../modules/PriorityQueue');
 
 var Point = function (x, y, l, p) {
   this.x = x;

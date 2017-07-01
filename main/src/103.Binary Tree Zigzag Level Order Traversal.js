@@ -31,7 +31,7 @@
  * @param {TreeNode} root
  * @return {number[][]}
  */
-var BinaryTree = require('./BinaryTree');
+var BinaryTree = require('../modules/BinaryTree');
 var zigzagLevelOrder = function(root) {
   var res=[],nodes=[];
   if(root==null) return res;

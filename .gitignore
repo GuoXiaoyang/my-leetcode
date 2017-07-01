@@ -2,3 +2,5 @@
 /node_modules
 /lib
 /coverage
+/main/test.js
+/spec

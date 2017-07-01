@@ -29,48 +29,48 @@
  The input prerequisites is a graph represented by a list of prerequisites, not adjacency
  matrices. Read more about how a graph is represented.
  You may assume that there are no duplicate prerequisites in the input prerequisites.
-****************************************************************/
+ ****************************************************************/
 /**
  * @param {number} numCourses
  * @param {number[][]} prerequisites
  * @return {number[]}
  */
-var findOrder = function(numCourses, prerequisites) {
-    //init the inDegree and neighbours
-    var neighbors=[];
-    for(var i=0;i<numCourses;i++) {
-      neighbors.push([]);
-    }
-    var inDegree = new Array(numCourses).fill(0);
-    for(var i=0; i<prerequisites.length; i++) {
-      var x=prerequisites[i][1],y=prerequisites[i][0];
-      inDegree[y]++;
-      neighbors[x].push(y);
-    }
+var findOrder = function (numCourses, prerequisites) {
+  //init the inDegree and neighbours
+  var neighbors = [];
+  for (var i = 0; i < numCourses; i++) {
+    neighbors.push([]);
+  }
+  var inDegree = new Array(numCourses).fill(0);
+  for (var i = 0; i < prerequisites.length; i++) {
+    var x = prerequisites[i][1], y = prerequisites[i][0];
+    inDegree[y]++;
+    neighbors[x].push(y);
+  }
 
-    //store the nodes whose indegree=0;
-    var queue=[];
-    for(i=0;i<numCourses;i++) {
-      if(inDegree[i]===0) queue.push(i);
+  //store the nodes whose indegree=0;
+  var queue = [];
+  for (i = 0; i < numCourses; i++) {
+    if (inDegree[i] === 0) queue.push(i);
+  }
+  //BFS
+  var res = [];
+  var count = 0;
+  while (queue.length !== 0) {
+    count++;
+    var node = queue.shift();
+    res.push(node);
+    for (i = 0; i < neighbors[node].length; i++) {
+      if (--inDegree[neighbors[node][i]] == 0) queue.push(neighbors[node][i]);
     }
-    //BFS
-    var res=[];
-    var count=0;
-    while(queue.length!==0) {
-      count++;
-      var node=queue.shift();
-      res.push(node);
-      for(i=0;i<neighbors[node].length;i++) {
-        if(--inDegree[neighbors[node][i]]==0) queue.push(neighbors[node][i]);
-      }
-    }
+  }
 
-    return count==numCourses?res:[];
-  };
+  return count == numCourses ? res : [];
+};
 
-var n= 4, prerequisites = [[1,0],[2,0],[3,1],[3,2]];
+var n = 4, prerequisites = [[1, 0], [2, 0], [3, 1], [3, 2]];
 var algo = "algo";
 console.time(algo);
-var res = findOrder(n,prerequisites);
+var res = findOrder(n, prerequisites);
 console.timeEnd(algo);
-console.log("res:",res);
+console.log("res:", res);
