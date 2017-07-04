@@ -20,18 +20,18 @@
 
  For now, the judge is able to judge based on one instance of gray code sequence.
  Sorry about that.
-****************************************************************/
+ ****************************************************************/
 
 /**
  * @param {number} n
  * @return {number[]}
  */
-var grayCode = function(n) {
-  var res=[0];
-  for(var i=0;i<n;i++) {
-    var len=res.length;
-    for(var j=len-1;j>=0;j--) {
-      res.push(res[j] | 1<<i);
+var grayCode = function (n) {
+  var res = [0];
+  for (var i = 0; i < n; i++) {
+    var len = res.length;
+    for (var j = len - 1; j >= 0; j--) {
+      res.push(res[j] | 1 << i);
     }
   }
   return res;
@@ -43,4 +43,4 @@ var algo = "algo";
 console.time(algo);
 var res = grayCode(n);
 console.timeEnd(algo);
-console.log("res:",res);
+console.log("res:", res);
