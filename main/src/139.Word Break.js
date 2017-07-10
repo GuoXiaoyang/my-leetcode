@@ -17,16 +17,23 @@
  * @param {string} s
  * @param {string[]} wordDict
  * @return {boolean}
+ * Dynamic Programming
  */
 const wordBreak = function (s, wordDict) {
-  let copyStr = s;
-  for (let i = 0; i < wordDict.length; i += 1) {
-    while (copyStr.indexOf(wordDict[i]) !== -1) {
-      const index = copyStr.indexOf(wordDict[i]);
-      copyStr = copyStr.substring(0, index) + copyStr.substring(index + wordDict[i].length);
+  const len = s.length;
+  const seg = new Array(len + 1).fill(0);
+  seg[0] = 1;
+  for (let i = 1; i < len + 1; i += 1) {
+    for (let j = 0; j < wordDict.length; j += 1) {
+      if (wordDict[j].length <= i && seg[i - wordDict[j].length] === 1) {
+        if (s.substring(i - wordDict[j].length, i) === wordDict[j]) {
+          seg[i] = 1;
+          break;
+        }
+      }
     }
   }
-  return copyStr.length === 0;
+  return seg[len] === 1;
 };
 
 // test
