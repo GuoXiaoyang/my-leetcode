@@ -1,7 +1,6 @@
 function permAlone(str) {
 	let res = [];
 	helper(str.split(''), res, 0);
-	console.log("res", res);
 	return res.filter(v => !(/(.)\1+/g.test(v))).length;
 }
 
