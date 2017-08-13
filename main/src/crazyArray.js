@@ -147,11 +147,13 @@ const res = maxSumOfAdajacentDif(arr);
 console.timeEnd("time");
 console.log('res:', res);
 
+
 // log1 recursive method >20 exceed calling stack
 // n: 11, time: 12496.398ms
 // max: 59
 
 // log2 cut branch using containOrder >20 exceed calling stack
+
 // n: 11, time: 1299.328ms
 // max: 59
 
